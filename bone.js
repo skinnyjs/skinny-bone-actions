@@ -1,19 +1,25 @@
-var Actions = require('./actions');
+var Actions = require('./lib/actions');
 
-module.exports = function attachActions(skinny, path) {
+module.exports = function attachActions(skinny, actionsOrPath) {
     "use strict";
 
     var actions = {};
 
-    require('fs').readdirSync(path).forEach(function(file) {
-        var actionsFromFile = require(path + '/' + file);
+    if (typeof actionsOrPath === 'string') {
+        var path = actionsOrPath;
 
-        for (var actionName in actionsFromFile) {
-            if (actionsFromFile.hasOwnProperty(actionName)) {
-                actions[actionName] = actionsFromFile[actionName];
+        require('fs').readdirSync(path).forEach(function(file) {
+            var actionsFromFile = require(path + '/' + file);
+
+            for (var actionName in actionsFromFile) {
+                if (actionsFromFile.hasOwnProperty(actionName)) {
+                    actions[actionName] = actionsFromFile[actionName];
+                }
             }
-        }
-    });
+        });
+    } else {
+        actions = actionsOrPath;
+    }
 
     skinny.actions = new Actions(skinny, actions);
 };

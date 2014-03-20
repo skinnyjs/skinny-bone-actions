@@ -1,6 +1,6 @@
 {
     "name":            "skinny-bone-actions",
-    "version":         "0.1.0",
+    "version":         "0.2.0",
     "description":     "Actions bone for skinny",
     "author":          "Geometria Lab",
     "contributors":    [
@@ -15,10 +15,20 @@
         "url":  "https://github.com/skinnyjs/skinny-bone-actions.git"
     },
     "dependencies":    {
-        "create-error": "0.3",
-        "joi":          "*"
+        "create-error":     "0.3",
+        "schema-inspector": "1.4.2",
+        "thunkify":         "0.0.1"
     },
     "devDependencies": {
+        "co": "*",
+        "skinny": "*",
+        "mocha-co": "*",
+        "chai":  "*"
     },
-    "engines":         [ "node >=0.11" ]
+    "scripts":         {
+        "test": "node ./node_modules/.bin/mocha --harmony"
+    },
+    "engines":         [
+        "node >=0.11"
+    ]
 }
