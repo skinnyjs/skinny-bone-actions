@@ -14,7 +14,7 @@ describe('Bone', function() {
         skinny.attach(bone, __dirname + '/actions');
 
         expect(skinny).to.have.ownProperty('actions');
-        expect(skinny.actions.returnString).to.be.a('function');
+        expect(skinny.actions).to.respondTo('returnString');
     });
 
     it('should be attached to skinny with actions object', function() {
@@ -22,6 +22,6 @@ describe('Bone', function() {
         skinny.attach(bone, actions);
 
         expect(skinny).to.have.ownProperty('actions');
-        expect(skinny.actions.returnString).to.be.a('function');
+        expect(skinny.actions).to.respondTo('returnString');
     });
 });
