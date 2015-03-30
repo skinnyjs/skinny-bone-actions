@@ -1,34 +1,33 @@
 {
-    "name":            "skinny-bone-actions",
-    "version":         "0.2.0",
-    "description":     "Actions bone for skinny",
-    "author":          "Geometria Lab",
-    "contributors":    [
-        {
-            "name":  "Ivan Shumkov",
-            "email": "ivan@shumkov.ru"
-        }
-    ],
-    "main":            "./bone.js",
-    "repository":      {
-        "type": "git",
-        "url":  "https://github.com/skinnyjs/skinny-bone-actions.git"
-    },
-    "dependencies":    {
-        "create-error":     "0.3",
-        "schema-inspector": "1.4.2",
-        "thunkify":         "0.0.1"
-    },
-    "devDependencies": {
-        "co": "*",
-        "skinny": "*",
-        "mocha-co": "*",
-        "chai":  "*"
-    },
-    "scripts":         {
-        "test": "node ./node_modules/.bin/mocha --harmony"
-    },
-    "engines": {
-        "node": "0.11"
+  "name": "skinny-bone-actions",
+  "version": "0.4.0",
+  "description": "Actions bone for skinny",
+  "author": "Geometria Lab",
+  "contributors": [
+    {
+      "name": "Ivan Shumkov",
+      "email": "ivan@shumkov.ru"
     }
+  ],
+  "main": "./bone.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/skinnyjs/skinny-bone-actions.git"
+  },
+  "dependencies": {
+    "create-error": "~0.3.1",
+    "thenify-all": "~1.6.0",
+    "schema-inspector": "~1.5.1"
+  },
+  "devDependencies": {
+    "skinny": "~0.3.0",
+    "co-mocha": "~1.1.0",
+    "chai": "~1.9.2"
+  },
+  "scripts": {
+    "test": "node ./node_modules/.bin/mocha --harmony --require co-mocha --reporter spec --recursive *.spec.js"
+  },
+  "engines": [
+    "node >=0.12"
+  ]
 }

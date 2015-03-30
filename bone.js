@@ -8,7 +8,7 @@ module.exports = function attachActions(skinny, actionsOrPath) {
     if (typeof actionsOrPath === 'string') {
         var path = actionsOrPath;
 
-        require('fs').readdirSync(path).forEach(function(file) {
+        require('fs').readdirSync(path).forEach((file) => {
             var actionsFromFile = require(path + '/' + file);
 
             for (var actionName in actionsFromFile) {
