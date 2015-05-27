@@ -1,15 +1,24 @@
-var Actions = require('./lib/actions');
+"use strict";
 
-module.exports = function attachActions(skinny, actionsOrPath) {
-    "use strict";
+const Actions = require('./lib/actions');
+const glob = require('glob');
+const fs = require('fs');
 
-    var actions = {};
+module.exports = function attachActions(skinny, actionsOrGlob) {
+    let actions = {};
 
-    if (typeof actionsOrPath === 'string') {
-        var path = actionsOrPath;
+    if (typeof actionsOrGlob === 'string') {
+        let path = actionsOrGlob;
 
-        require('fs').readdirSync(path).forEach((file) => {
-            var actionsFromFile = require(path + '/' + file);
+        let actionsPaths = glob.sync(actionsOrGlob);
+
+        if (actionsPaths.length === 0) {
+            throw new TypeError(`Actions by glob ${actionsOrGlob} not found`);
+        }
+
+        actionsPaths.forEach(function(path) {
+            path = fs.realpathSync(path)
+            var actionsFromFile = require(path);
 
             for (var actionName in actionsFromFile) {
                 if (actionsFromFile.hasOwnProperty(actionName)) {
@@ -18,7 +27,7 @@ module.exports = function attachActions(skinny, actionsOrPath) {
             }
         });
     } else {
-        actions = actionsOrPath;
+        actions = actionsOrGlob;
     }
 
     skinny.actions = new Actions(skinny, actions);

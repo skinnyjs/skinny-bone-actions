@@ -1,9 +1,9 @@
 "use strict";
 
-var expect = require('chai').expect;
+const expect = require('chai').expect;
 
-var skinny = require('skinny');
-var bone = require('./bone');
+const skinny = require('skinny');
+const bone = require('./bone');
 
 describe('Bone', function() {
     var newSkinny;
@@ -12,8 +12,8 @@ describe('Bone', function() {
         newSkinny = skinny.newSkinny();
     });
 
-    it('should be attached to skinny with actions path', function() {
-        newSkinny.attach(bone, __dirname + '/tests/actions');
+    it('should be attached to skinny with glob', function() {
+        newSkinny.attach(bone, __dirname + '/tests/actions/*.js');
 
         expect(newSkinny).to.have.ownProperty('actions');
         expect(newSkinny.actions).to.respondTo('returnString');

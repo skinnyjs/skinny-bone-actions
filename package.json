@@ -1,8 +1,10 @@
 {
   "name": "skinny-bone-actions",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Actions bone for skinny",
-  "author": "Geometria Lab",
+  "author": {
+    "name": "Geometria Lab"
+  },
   "contributors": [
     {
       "name": "Ivan Shumkov",
@@ -16,18 +18,22 @@
   },
   "dependencies": {
     "create-error": "~0.3.1",
-    "thenify-all": "~1.6.0",
-    "schema-inspector": "~1.5.1"
+    "glob": "~5.0.6",
+    "schema-inspector": "~1.5.1",
+    "thenify-all": "~1.6.0"
   },
   "devDependencies": {
-    "skinny": "~0.3.0",
-    "co-mocha": "~1.1.0",
-    "chai": "~1.9.2"
+    "skinny": "~0.4.0",
+    "mocha": "~2.2.4",
+    "chai": "~2.3.0"
   },
   "scripts": {
-    "test": "node ./node_modules/.bin/mocha --harmony --require co-mocha --reporter spec --recursive *.spec.js"
+    "test": "iojs --es_staging $(npm bin)/mocha *.spec.js **/*.spec.js"
   },
   "engines": [
     "node >=0.12"
-  ]
+  ],
+  "bugs": {
+    "url": "https://github.com/skinnyjs/skinny-bone-actions/issues"
+  }
 }
